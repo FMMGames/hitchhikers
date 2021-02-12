@@ -1827,7 +1827,7 @@ MonoBehaviour:
   - {fileID: 8563488655145220313, guid: e2e59bae89b99c2428a4b940c183bf59, type: 3}
   spawnerHolder: {fileID: 634697224}
   spawnCars: 1
-  spawnRate: 1
+  spawnRate: 0.75
   spawnerSpeed: 0
   timeSinceLevelStart: 1
 --- !u!4 &655719709
@@ -7578,6 +7578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentCar
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464298202496149843, guid: a6a4b708468e37b4d9b800f219aba31a,
+        type: 3}
+      propertyPath: carDetectionRange
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5464298203683410872, guid: a6a4b708468e37b4d9b800f219aba31a,
         type: 3}

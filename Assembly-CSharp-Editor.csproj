@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{17CB0ED5-837E-B505-7FD5-E5B87060EFAC}</ProjectGuid>
+    <ProjectGuid>{3381B7B0-E4F6-C39C-15E6-FB331CE09469}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -68,22 +68,22 @@
     <Compile Include="Assets\ThirdParty\NavMeshComponents\Editor\NavMeshModifierVolumeEditor.cs" />
     <Compile Include="Assets\ThirdParty\NavMeshComponents\Editor\NavMeshSurfaceEditor.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>F:/Unity Hub/2019.1.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -302,25 +302,25 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>F:/Gabs/Unity/Collab/Hitchhikers/hitchhikers/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>F:/Unity Hub/2019.1.14f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -679,11 +679,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{0973FE13-501A-C401-F69E-FD8438530335}</Project>
+      <Project>{04D0523E-41D2-D466-2FDF-A688E8F9BC10}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{CD85FAC5-B169-4B5D-35E1-570A3A599A06}</Project>
+      <Project>{668DD396-F910-86BF-7F88-48FCB3D575BF}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>
