@@ -5,35 +5,36 @@ using UnityEngine;
 public class CarSpawner : MonoBehaviour
 {
     [SerializeField] Transform[] carSpawners;
-    [SerializeField] Transform[] carTargets;
     [SerializeField] GameObject[] carPrefabs;
-    [SerializeField] GameObject spawnerHolder;
 
-    [SerializeField] bool spawnCars;
+    public bool spawnCars;
     [SerializeField] float spawnRate;
-    [SerializeField] float spawnerSpeed;
 
     public float timeSinceLevelStart;
 
     private void Start()
     {
-        if(spawnCars)
-        InvokeRepeating("SpawnCar", 0, spawnRate);
+        InvokeRepeating("SpawnCar", 2, spawnRate);
     }
 
     private void Update()
     {
         timeSinceLevelStart += Time.deltaTime;
-
-        spawnerHolder.transform.Translate(transform.forward * spawnerSpeed * Time.deltaTime);
     }
 
     public void SpawnCar()
     {
-        Transform spawnPoint = PickSpawnPoint();
-        int r = Random.Range(0, carPrefabs.Length);
-        GameObject car = Instantiate(carPrefabs[r], spawnPoint.position, spawnPoint.rotation);
-        car.GetComponent<CarController>().target = PickCarTarget();
+        if (GameManager.instance.levelGenerated)
+        {
+            Transform spawnPoint = PickSpawnPoint();
+
+            int r = Random.Range(0, carPrefabs.Length);
+
+            GameObject car = Instantiate(carPrefabs[r], spawnPoint.position, spawnPoint.rotation);
+            car.GetComponent<CarController>().target = PickCarTarget();
+
+            car.transform.SetParent(GameManager.instance.carHolder);
+        }
     }
 
     Transform PickSpawnPoint()
@@ -43,6 +44,6 @@ public class CarSpawner : MonoBehaviour
 
     Transform PickCarTarget()
     {
-        return carTargets[Random.Range(0, carTargets.Length)];
+        return GameManager.instance.carTargets[Random.Range(0, GameManager.instance.carTargets.Length)];
     }
 }

@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Racer myRacer;
     [SerializeField] Camera cam;
     [SerializeField] LayerMask jumpableLayer, carLayer;
-    [SerializeField] GameObject jumpMarker;
+    [SerializeField] GameObject jumpMarker, jumpRangeDisplay;
     [SerializeField] Animator anim;
 
     public CarController currentCar, targetCar;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
   
     private void Update()
     {
+        if(GameManager.instance.currentGameState != GameState.EndScreen)
         JumpControl();
 
         if (currentCar != null)
@@ -39,7 +41,9 @@ public class PlayerController : MonoBehaviour
             float d = (transform.position - jumpMarker.transform.position).magnitude;
 
             if (d <= carJumpRange && !jumping)
-                Jump();
+            {
+                Jump();               
+            }
 
             slowmo = false;
         }
@@ -55,7 +59,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             if (jumpMarker.activeInHierarchy)
+            {
                 jumpMarker.SetActive(false);
+                jumpRangeDisplay.SetActive(false);
+            }
 
             if (Time.timeScale != 1)
                 Time.timeScale = Mathf.Lerp(Time.timeScale, 1, variationSpeed * Time.deltaTime);
@@ -70,14 +77,19 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1000, jumpableLayer))
         {
             if (!jumpMarker.activeInHierarchy)
+            {
                 jumpMarker.SetActive(true);
+                jumpRangeDisplay.SetActive(true);
+            }
 
             jumpMarker.transform.position = hit.point;
+            jumpRangeDisplay.transform.position = new Vector3(jumpRangeDisplay.transform.position.x, jumpMarker.transform.position.y + 0.5f, jumpRangeDisplay.transform.position.z);
         }
         else
         {
             jumpMarker.transform.position = transform.position;
             jumpMarker.SetActive(false);
+            jumpRangeDisplay.SetActive(false);
         }
     }
 
@@ -101,6 +113,9 @@ public class PlayerController : MonoBehaviour
         if (targetCar != null)
         {
             JumpToCar(targetCar);
+
+            if (GameManager.instance.currentGameState == GameState.MainScreen)
+                GameManager.instance.LevelStart();           
         }
     }
 
@@ -111,14 +126,57 @@ public class PlayerController : MonoBehaviour
 
         transform.SetParent(car.transform);
 
-        Invoke("EndJumpState", 1.1f);
+        Invoke("EndJumpState", 0.9f);
 
-        transform.DOLocalJump(car.playerSpot.localPosition, 3, 1, 1.3f).OnComplete(() => { currentCar.hostingPlayer = false; currentCar = targetCar; currentCar.hostingPlayer = true; targetCar = null; });
+        transform.DOLocalJump(car.playerSpot.localPosition, 2.5f, 1, 1.2f).OnComplete(() => { EndJump(); });       
+    }
+
+    void EndJump()
+    {
+        ResetCars();
+    }
+
+    void ResetCars()
+    {
+        if (currentCar)
+            currentCar.hostingPlayer = false;
+
+        currentCar = targetCar;
+        currentCar.hostingPlayer = true;
+
+        if (!currentCar.touched)
+        {
+            currentCar.CoinFX();
+            GameManager.instance.EarnScore(myRacer.racerIndex, 0);
+        }
+
+        currentCar.touched = true;
+        targetCar = null;
     }
 
     void EndJumpState()
     {
         jumping = false;
         anim.SetBool("Jumping", jumping);
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = GameManager.instance.racerSpawnPoints[0].position;
+        transform.rotation = GameManager.instance.racerSpawnPoints[0].rotation;
+
+        currentCar = null;
+        transform.parent = null;
+
+        anim.SetTrigger("Reset");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "EndTile")
+        {
+            if(GameManager.instance.currentGameState == GameState.InGame)
+            GameManager.instance.LevelEnd();
+        }
     }
 }
