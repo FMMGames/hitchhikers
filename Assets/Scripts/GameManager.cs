@@ -161,6 +161,7 @@ public class GameManager : MonoBehaviour
         SetupRacers();
 
         SaveProgress();
+        UIManager.instance.EnableLoadingScreen();
     }
 
     void LoadProgress()

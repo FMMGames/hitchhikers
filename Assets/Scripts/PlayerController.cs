@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask jumpableLayer, carLayer;
     [SerializeField] GameObject jumpMarker, jumpRangeDisplay;
     [SerializeField] Animator anim;
+    [SerializeField] ParticleSystem confettiFX;
 
     public CarController currentCar, targetCar;
     [SerializeField] float carDetectionRange, carJumpRange;
@@ -176,7 +177,10 @@ public class PlayerController : MonoBehaviour
         if(other.tag == "EndTile")
         {
             if(GameManager.instance.currentGameState == GameState.InGame)
-            GameManager.instance.LevelEnd();
+            {
+                GameManager.instance.LevelEnd();
+                confettiFX.Play();
+            }
         }
     }
 }

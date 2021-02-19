@@ -113,6 +113,9 @@ public class AIRacerController : MonoBehaviour
     {
         if (targetCar != null)
         {
+            Vector3 pos = new Vector3(targetCar.transform.position.x, transform.position.y, targetCar.transform.position.z);
+            transform.LookAt(pos);
+
             JumpToCar(targetCar);
         }
     }

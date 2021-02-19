@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField] GameObject mainScreen, inGameScreen, resultScreen;
+    [SerializeField] GameObject mainScreen, inGameScreen, resultScreen, loadingScreen;
     [SerializeField] RectTransform scoreBoard;
     [SerializeField] GameObject scorePrefab;
     [SerializeField] Image levelProgressionBar;
@@ -25,6 +25,19 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         UpdateScreens();
+
+        EnableLoadingScreen();
+    }
+
+    public void EnableLoadingScreen()
+    {
+        loadingScreen.SetActive(true);
+        Invoke("DisableLoadingScreen", 3f);
+    }
+
+    void DisableLoadingScreen()
+    {
+        loadingScreen.SetActive(false);
     }
 
     private void Update()
