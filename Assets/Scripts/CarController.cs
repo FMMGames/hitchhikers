@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
     public float moveSpeed, spdMultiplier;
     [SerializeField] ParticleSystem coinFX;
 
-    public bool hostingPlayer, touched;
+    public bool hostingPlayer, hostingAI, touched, touchedByAI;
     Collider jumpRange;
     float d;
 
@@ -36,7 +36,7 @@ public class CarController : MonoBehaviour
         if (d > 1)
             mySelf.SetDestination(target.position);
         else
-            Destroy(gameObject);
+            gameObject.SetActive(false);
 
         if (jumpRange)
         {

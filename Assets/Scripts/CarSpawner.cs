@@ -8,18 +8,11 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] GameObject[] carPrefabs;
 
     public bool spawnCars;
-    [SerializeField] float spawnRate;
-
-    public float timeSinceLevelStart;
+    public float spawnRate;
 
     private void Start()
     {
-        InvokeRepeating("SpawnCar", 2, spawnRate);
-    }
-
-    private void Update()
-    {
-        timeSinceLevelStart += Time.deltaTime;
+        InvokeRepeating("SpawnCar", 0, spawnRate);
     }
 
     public void SpawnCar()
@@ -34,6 +27,8 @@ public class CarSpawner : MonoBehaviour
             car.GetComponent<CarController>().target = PickCarTarget();
 
             car.transform.SetParent(GameManager.instance.carHolder);
+
+            car.GetComponent<CarController>().moveSpeed += GameManager.instance.timeSinceLevelStart / 10;
         }
     }
 

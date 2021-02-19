@@ -8,6 +8,7 @@ public enum GameState { MainScreen, InGame, EndScreen};
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [SerializeField] CamFollow camHolder;
     public PlayerController player;
     public LevelGenerator generator;
     public Transform[] carTargets;
@@ -16,10 +17,14 @@ public class GameManager : MonoBehaviour
 
     public GameState currentGameState;
     public int currentLevel = 1;
+    [Range(0,1)]
+    public float AIDifficulty;
 
     [SerializeField] Camera mainCam;
     [SerializeField] Transform startCamPos, inGameCamPos, endCamPos;
     [SerializeField] float camTransitionSpeed;
+
+    public float timeSinceLevelStart;
 
     public Racer[] racers;
     public int[] racerScores;
@@ -77,6 +82,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if(currentGameState == GameState.InGame)
+        timeSinceLevelStart += Time.deltaTime;
+
         ChangeCameraAngle();
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -131,8 +139,14 @@ public class GameManager : MonoBehaviour
     public void LevelEnd()
     {
         ChangeGameState(2);
-        UIManager.instance.UpdateResultScreen(true);
+
         SortRacersByDescendingScore();
+
+        if (racerNames[0] == playerName)
+            UIManager.instance.UpdateResultScreen(true);
+        else
+            UIManager.instance.UpdateResultScreen(false);
+
         PassScores();
     }
 
@@ -141,6 +155,7 @@ public class GameManager : MonoBehaviour
         currentLevel++;
         ChangeGameState(0);
         player.ResetPlayer();
+        ResetAI();
         ResetLevel();
         generator.GenerateLevel();
         SetupRacers();
@@ -181,6 +196,26 @@ public class GameManager : MonoBehaviour
         foreach (Transform child in generator.level)
         {
             Destroy(child.gameObject);
+        }
+
+        camHolder.transform.position = player.transform.position;
+    }
+
+    void ResetAI()
+    {
+        for (int i = 1; i < racers.Length; i++)
+        {
+            if (i > 0)
+            {
+                racers[i].transform.position = GameManager.instance.racerSpawnPoints[i].position;
+                racers[i].transform.rotation = GameManager.instance.racerSpawnPoints[i].rotation;
+
+                racers[i].GetComponent<AIRacerController>().currentCar = null;
+                racers[i].GetComponent<AIRacerController>().transform.parent = null;
+
+                racers[i].GetComponent<AIRacerController>().anim.SetTrigger("Reset");
+                racers[i].GetComponent<AIRacerController>().ResetAppearance();
+            }
         }
     }
 

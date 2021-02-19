@@ -58,11 +58,8 @@ MonoBehaviour:
   - {fileID: 8563488655145220313, guid: 233018222fa2ad7438eda1571a32997e, type: 3}
   - {fileID: 8563488655145220313, guid: c66106dcbdc37364a8fd58521d1b6545, type: 3}
   - {fileID: 8563488655145220313, guid: e2e59bae89b99c2428a4b940c183bf59, type: 3}
-  spawnerHolder: {fileID: 414885844673776273}
   spawnCars: 1
   spawnRate: 5
-  spawnerSpeed: 0
-  timeSinceLevelStart: 1
 --- !u!1 &2113805947884683359
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,11 +340,8 @@ MonoBehaviour:
   - {fileID: 8563488655145220313, guid: 233018222fa2ad7438eda1571a32997e, type: 3}
   - {fileID: 8563488655145220313, guid: c66106dcbdc37364a8fd58521d1b6545, type: 3}
   - {fileID: 8563488655145220313, guid: e2e59bae89b99c2428a4b940c183bf59, type: 3}
-  spawnerHolder: {fileID: 3498949317871002308}
   spawnCars: 1
   spawnRate: 5
-  spawnerSpeed: 0
-  timeSinceLevelStart: 1
 --- !u!1 &4937790537013609209
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +421,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carTargets: []
+  mySpawners:
+  - {fileID: 4641096485332778231}
+  - {fileID: 1917126455336311823}
+  mySpawnInterval: 3
 --- !u!1 &7267473465338111575
 GameObject:
   m_ObjectHideFlags: 0

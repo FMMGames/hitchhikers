@@ -58,11 +58,8 @@ MonoBehaviour:
   - {fileID: 8563488655145220313, guid: 233018222fa2ad7438eda1571a32997e, type: 3}
   - {fileID: 8563488655145220313, guid: c66106dcbdc37364a8fd58521d1b6545, type: 3}
   - {fileID: 8563488655145220313, guid: e2e59bae89b99c2428a4b940c183bf59, type: 3}
-  spawnerHolder: {fileID: 998712355876315906}
   spawnCars: 1
   spawnRate: 5
-  spawnerSpeed: 0
-  timeSinceLevelStart: 1
 --- !u!1 &2113805947884683359
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carTargets: []
+  mySpawners:
+  - {fileID: 5883321604988812753}
+  mySpawnInterval: 3
 --- !u!1 &9081428195472084383
 GameObject:
   m_ObjectHideFlags: 0
